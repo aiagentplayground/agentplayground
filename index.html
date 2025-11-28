@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Challenge Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🚩 CTF Platform</div>
+            <ul class="nav-links">
+                <li><a href="#challenges">Challenges</a></li>
+                <li><a href="#scoreboard">Scoreboard</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to the CTF Challenge</h1>
+            <p>Test your hacking skills and capture the flags!</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number" id="solved-count">0</span>
+                    <span class="stat-label">Challenges Solved</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="total-points">0</span>
+                    <span class="stat-label">Total Points</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="challenges" class="challenges-section">
+            <h2>Challenges</h2>
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="web">Web</button>
+                <button class="filter-btn" data-category="crypto">Crypto</button>
+                <button class="filter-btn" data-category="misc">Misc</button>
+            </div>
+            <div class="challenges-grid" id="challenges-grid">
+                <!-- Challenges will be dynamically loaded -->
+            </div>
+        </section>
+
+        <section id="scoreboard" class="scoreboard-section">
+            <h2>Scoreboard</h2>
+            <table class="scoreboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Score</th>
+                        <th>Challenges</th>
+                    </tr>
+                </thead>
+                <tbody id="scoreboard-body">
+                    <tr>
+                        <td>1</td>
+                        <td>You</td>
+                        <td id="scoreboard-points">0</td>
+                        <td id="scoreboard-challenges">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About</h2>
+            <p>This is a Capture The Flag (CTF) platform where you can test your cybersecurity skills. Each challenge has a hidden flag in the format <code>FLAG{...}</code>. Find the flags and submit them to earn points!</p>
+            <h3>Rules</h3>
+            <ul>
+                <li>Flags are in the format: <code>FLAG{your_flag_here}</code></li>
+                <li>Each challenge can only be solved once</li>
+                <li>No brute forcing allowed</li>
+                <li>Have fun and learn!</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Challenge Modal -->
+    <div id="challenge-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title">Challenge Title</h2>
+            <span class="challenge-category" id="modal-category">Category</span>
+            <span class="challenge-points" id="modal-points">100 pts</span>
+            <p id="modal-description">Challenge description goes here.</p>
+            <div id="modal-hint" class="hint-section"></div>
+            <form id="flag-form">
+                <input type="text" id="flag-input" placeholder="FLAG{...}" autocomplete="off">
+                <button type="submit">Submit Flag</button>
+            </form>
+            <p id="flag-result"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 CTF Platform. Happy Hacking! 🏴‍☠️</p>
+    </footer>
+
+    <script src="challenges.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
