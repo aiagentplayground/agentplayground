@@ -1,0 +1,446 @@
+/* CTF Platform Styles */
+:root {
+    --primary-color: #00ff41;
+    --secondary-color: #0d0d0d;
+    --background-color: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --text-color: #e0e0e0;
+    --accent-color: #ff0040;
+    --success-color: #00ff41;
+    --warning-color: #ffaa00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--secondary-color);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--background-color) 100%);
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 20px var(--primary-color);
+    margin-bottom: 1rem;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px var(--primary-color);
+    }
+    to {
+        text-shadow: 0 0 30px var(--primary-color), 0 0 40px var(--primary-color);
+    }
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+/* Challenges Section */
+.challenges-section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.challenges-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.challenge-card {
+    background-color: var(--card-bg);
+    border: 1px solid #333;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 255, 65, 0.2);
+}
+
+.challenge-card.solved {
+    border-color: var(--success-color);
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0, 255, 65, 0.1) 100%);
+}
+
+.challenge-card.solved::after {
+    content: '✓';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--success-color);
+    font-size: 1.5rem;
+}
+
+.challenge-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.challenge-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.challenge-category {
+    background-color: var(--accent-color);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.challenge-points {
+    color: var(--warning-color);
+    font-weight: bold;
+}
+
+.challenge-card p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    border: 2px solid var(--primary-color);
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.close-btn:hover {
+    color: var(--accent-color);
+}
+
+.modal-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-content .challenge-category,
+.modal-content .challenge-points {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.hint-section {
+    background-color: var(--background-color);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--warning-color);
+}
+
+.hint-section h4 {
+    color: var(--warning-color);
+    margin-bottom: 0.5rem;
+}
+
+#flag-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#flag-input {
+    flex: 1;
+    padding: 0.75rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+#flag-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+#flag-form button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#flag-form button:hover {
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+#flag-result {
+    text-align: center;
+    font-weight: bold;
+    min-height: 1.5rem;
+}
+
+#flag-result.success {
+    color: var(--success-color);
+}
+
+#flag-result.error {
+    color: var(--accent-color);
+}
+
+/* Scoreboard Section */
+.scoreboard-section {
+    padding: 3rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.scoreboard-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.scoreboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+}
+
+.scoreboard-table th,
+.scoreboard-table td {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.scoreboard-table th {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.scoreboard-table tr:hover {
+    background-color: rgba(0, 255, 65, 0.1);
+}
+
+/* About Section */
+.about-section {
+    padding: 3rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.about-section h3 {
+    color: var(--primary-color);
+    margin: 1.5rem 0 1rem;
+}
+
+.about-section p {
+    margin-bottom: 1rem;
+}
+
+.about-section code {
+    background-color: var(--card-bg);
+    padding: 0.2rem 0.5rem;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.about-section ul {
+    list-style-position: inside;
+    margin-left: 1rem;
+}
+
+.about-section li {
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--primary-color);
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .stats {
+        gap: 2rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    #flag-form {
+        flex-direction: column;
+    }
+}

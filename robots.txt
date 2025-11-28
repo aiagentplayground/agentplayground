@@ -1,0 +1,9 @@
+# CTF Challenge - Robots.txt
+# This file tells search engines what to crawl
+
+User-agent: *
+Disallow: /admin/
+Disallow: /secret/
+
+# Note to self: Remember the flag for the robots challenge
+# FLAG{robots_txt_secrets}
